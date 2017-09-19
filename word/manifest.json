@@ -1,0 +1,9 @@
+{
+  "name": "word",
+  "manifest_version": 2,
+  "version": "2.1",
+  "description": "learn english",
+  "browser_action": {
+    "default_icon": "write_fill.gif"
+  }
+}
