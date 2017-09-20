@@ -3,7 +3,27 @@
   "manifest_version": 2,
   "version": "2.1",
   "description": "learn english",
+  "icons": { "128": "write_fill.gif" },
+  "background": {
+    "persistent": false,
+    "scripts": ["bg.js"]
+  },
+  "permissions": [
+      "http://api.wunderground.com/api/",
+      "tabs",
+      "activeTab",
+      "notifications",
+      "storage"
+  ],
   "browser_action": {
-    "default_icon": "write_fill.gif"
-  }
+    "default_title": "",
+    "default_icon": "write_fill.gif",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+      {
+          "matches": ["*://www.baidu.com/"],
+          "js": ["js/cannot_touch.js"]
+      }
+  ]
 }
