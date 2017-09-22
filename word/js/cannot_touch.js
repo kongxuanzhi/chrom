@@ -20,4 +20,4 @@ function over_btn(e){
     btn_move(this, e.clientX, e.clientY);
 }
 
-document.getElementById('s_btn_wr').onmouseover = over_btn;
+document.getElementById('su').onmouseover = over_btn;
