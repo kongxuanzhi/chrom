@@ -3,27 +3,41 @@
   "manifest_version": 2,
   "version": "2.1",
   "description": "learn english",
-  "icons": { "128": "write_fill.gif" },
+  "icons": {
+    "16": "/images/logo.png",
+    "128": "/images/logo.png"
+  },
   "background": {
-    "persistent": false,
-    "scripts": ["bg.js"]
+    "persistent": true,
+    "scripts": [
+      "libs/constants.js",
+      "libs/reg.js",
+      "libs/md5.js",
+      "libs/localStorageUtil.js",
+      "libs/model/word.js",
+      "libs/model/netWords.js",
+      "libs/urlUtil.js",
+      "libs/pageParse.js",
+      "js/background.js"
+    ]
   },
   "permissions": [
-      "http://api.wunderground.com/api/",
-      "tabs",
-      "activeTab",
-      "notifications",
-      "storage"
+    "contextMenus"
   ],
   "browser_action": {
     "default_title": "",
-    "default_icon": "write_fill.gif",
+    "default_icon": "/images/logo.png",
     "default_popup": "popup.html"
   },
   "content_scripts": [
-      {
-          "matches": ["*://www.baidu.com/"],
-          "js": ["js/cannot_touch.js"]
-      }
+    {
+      "matches": ["*://*/*"],
+      "js": [
+        "libs/jquery-1.8.0.js",
+        "libs/urlUtil.js",
+        "js/content.js"
+      ],
+      "run_at": "document_start"
+    }
   ]
 }
