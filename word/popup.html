@@ -6,21 +6,159 @@
     padding: 0;
 }
 
-body {
+/*body {
     width: 200px;
     height: 100px;
-}
+}*/
 
-div {
+/*div {
     line-height: 100px;
     font-size: 42px;
     text-align: center;
 }
+*/
+
+/*
+a {  
+    position: relative;  
+    display: inline-block;  
+    outline: none;  
+    text-decoration: none;  
+    color: #000;  
+    font-size: 32px;  
+    padding: 0 10px;  
+}  
+
+/* 大框 
+a:hover::before, a:hover::after {   
+    content: "";  
+    display: block;  
+    position: absolute;  
+    top: -15%%;  
+    left: -14%%;  
+    width: 120%;  
+    height: 120%;  
+    border-style: solid;  
+    border-width: 4px;  
+    border-color: #DDD;  
+ } 
+  
+/* 小框 */  
+/* a:hover::after {  
+    top: 0%;  
+    left: 0%;  
+    width: 100%;  
+    height: 100%;  
+    border-width: 2px;  
+ } 
+.circle:after {
+position: absolute;
+ content: url(images/logo.png); 
+} */
+/*.circle:before {
+	/*background-color: #541348;
+    width: 100px;
+    height: 100px;
+    display: block;
+    content: '\25e4';
+    position: absolute;
+    top: 8px;
+
+}  
+
+.circle:hover::before {
+    content: '';
+    background: green;
+}*/
+
+.circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px dashed green;
+    position: relative;
+    line-height: 20px;
+    font-size: 7px;
+    opacity :0.1;
+    transition: opacity 2s, all 0.2s;
+        position: absolute;
+}
+.circle {
+    background: green;
+     opacity :1;
+     width:300px;
+     height:300px;
+     line-height: 300px;
+     font-size: 24px;
+}
+/*a:before { content:""; }  */
 </style>
 </head>
 <body>
 hi are you ok
-<div id="clock_div"></div>
-<script src="js/my_clock.js"></script>
+<!-- <div id="clock_div"></div> -->
+<a href="images/" data-et="fdf">nihao</a>
+<div id="div1" class="circle" style="background-color: orange; z-index: 3; top: 20px; left: 134px">World 世界</div>
+<div class="circle" style="background-color: pink; z-index: 2; top: 100px; left: 654px">World 世界</div>
+<div class="circle" style="background-color: blue; z-index: 5; top: 50px; left: 184px">World 世界</div>
+<div class="circle" style="background-color: red; z-index: 1; top: 340px; left: 134px">World 世界</div>
+<!-- <script src="js/my_clock.js"></script> -->
+<script type="text/javascript">
+window.onload = function(){  
+    var oDiv = document.getElementById('div1');  
+    // var oImg = document.getElementById('img1');  
+      
+    tqfc(oDiv);  
+    // tqfc(oImg);  
+      
+    function tqfc(obj){  
+            obj.onmousedown = function(ev){  
+            var ev = ev || event;  
+            var oDivX = ev.clientX - this.offsetLeft;  
+            var oDivY = ev.clientY - this.offsetTop;  
+            obj.style.backgroundColor = 'red';  
+              
+            //加入兼容问题  
+            if(obj.setCapture){  
+                obj.setCapture();  
+                }  
+              
+            document.onmousemove = function(ev){  //注意这里是document  
+                var ev = ev || event;  
+                L = ev.clientX - oDivX;  
+                T = ev.clientY - oDivY;  
+                  
+                //限制不超出可视范围  
+                if(L<100){  //磁性吸附重点在于这里,原本是0,改成100  
+                    L = 0;  
+                    }else if(L>document.documentElement.clientWidth - obj.offsetWidth){  
+                        L = document.documentElement.clientWidth - obj.offsetWidth;  
+                        }  
+                          
+                if(T<0){  
+                    T = 0;  
+                    }else if(T>document.documentElement.clientHeight - obj.offsetHeight){  
+                        T = document.documentElement.clientHeight - obj.offsetHeight;  
+                        }  
+                  
+                obj.style.left = L + 'px';  
+                obj.style.top = T + 'px';  
+                }  
+            return false;  
+            }  
+            obj.onmouseup = function(){  
+            document.onmousedown = document.onmousemove = null;  
+            obj.style.backgroundColor = '#7391C5';  
+              
+            //加入兼容问题  
+            if( obj.releaseCapture ){  
+                obj.releaseCapture();  
+                }  
+            }  
+        }  
+    }  
+</script>  
 </body>
 </html>
+
