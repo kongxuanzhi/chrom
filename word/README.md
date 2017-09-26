@@ -1,6 +1,24 @@
 # chrom
 chrom extension
 
+#todo：
+CSS中的margin属性，与clientWidth、offsetWidth、clientHeight、offsetHeight均无关)
+1. DOM元素尺寸
+    * offsetHeight: border+padding+height(元素高度) 元素的实际的高度 (offsetWidth)
+    * clientHeight: padding+height(元素高度)-滚动条(如果有滚动条)（clientWidth）
+    * scrollHeight: padding+包含内容的完全高度
+    * scrollTop: 包含内容的完全高度-height-滚动条
+    * offsetLeft: 元素加上border距离父类元素的距离
+1.2. 屏幕上一点的属性
+    * PageY: 鼠标点距离实际页面的左上角的高度（包括scrollTop） 以页面为参考点,不随滑动条移动而变化 = clientY+scrollTop-clientTop absolute
+    * clintY: 相对于浏览器本身页面的左上角的高度，（client 客户端） 以浏览器滑动条此刻的滑动到的位置为参考点,随滑动条移动 而变化. fixed
+    * screenX: 电脑桌面的距离
+    * layerX: （border）鼠标相比较于当前坐标系的位置,即如果触发元素没有设置绝对定位或相对定位,以页面为参考点,如果有,将改变参考坐标系,从触发元素盒子模型的border区域的左上角为参考点
+    * offsetX: (内容)IE特有,鼠标相比较于触发事件的元素的位置 以元素盒子模型的内容区域的左上角为参考点
+    offsetX: 是鼠标事件相对于目标元素的位置
+    layerX：是鼠标相对于目标元素最近（包括自己）的具有absolute/relative的定位元素的位置
+2. bezir曲线
+
 ##ver1
 1. 右键，将当前网站加入到统计监听列表
 1.1 如果已经加进去了，就显示移除
@@ -46,18 +64,18 @@ value: {
 //        chrome.runtime.sendMessage(selection.toString());
 //    }
 //}
-<!-- 
+<!--
 db:
-{   
+{
     id: md5net
     addCount: 3
     url: ''
     words:  [
         'word': {
-            
+
         },
         'ok': {
-            
+
         }
     ]
 } -->
