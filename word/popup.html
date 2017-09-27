@@ -72,17 +72,17 @@ position: absolute;
 }*/
 
 .circle {
-    /*border-radius: 50%;*/
-    width: 200px;
-    height: 200px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
     text-align: center;
     border: 1px dashed green;
     line-height: 20px;
     font-size: 7px;
     opacity :1.1;
-    /*transition: opacity 2s, all 0.2s;*/
+    transition: opacity 2s, all 0.2s;
     position: absolute;
-    /*animation: twinkle 1000ms alternate infinite;*/
+    animation: twinkle 1000ms alternate infinite;
 }
 
 @keyframes twinkle {
@@ -90,7 +90,7 @@ position: absolute;
     to {opacity: 1;}
 }
 
-.circle:hover1 {
+.circle:hover {
     background: green;
     opacity :1;
     width:300px;
@@ -105,12 +105,12 @@ position: absolute;
 <!-- hi are you ok -->
 <!--<div id="clock_div"></div> -->
 <!-- <a href="images/" data-et="fdf">nihao</a> -->
-<!--<div id="div1" class="circle" style="background-color: orange; z-index: 3; top: 20px; left: 134px">1</div>-->
-<div style="width: 600px; height:600px; position: relative; border: 1px solid red; left: 400px; top: 100px;">
+<div id="div1" class="circle" style="background-color: orange; z-index: 3; top: 20px; left: 134px">1</div>
+<!-- <div style="width: 600px; height:600px; position: relative; border: 1px solid red; left: 400px; top: 100px;">
 <div class="circle" style="background-color: pink; z-index: 2; top: 10px; left: 60px">World 世界</div>
-</div>
-<!--<div class="circle" style="background-color: blue; z-index: 5; top: 50px; left: 184px">World 世界</div>
-<div class="circle" style="background-color: red; z-index: 1; top: 340px; left: 134px">World 世界</div>-->
+</div> -->
+<div class="circle" style="background-color: blue; z-index: 5; top: 50px; left: 184px">World 世界</div>
+<div class="circle" style="background-color: red; z-index: 1; top: 340px; left: 134px">World 世界</div>
 <!-- <script src="js/my_clock.js"></script> -->
 <div id="test" style="border: 1px dashed red; position: fixed; top:300;left:220;"></div>
 <script type="text/javascript">
@@ -149,7 +149,7 @@ window.onload = function(){
 
             obj.parentElement.onmousemove = function(ev){  //注意这里是document
                 var ev = ev || event;
-                
+
                 L = ev.offsetX - oDivX;
                 T = ev.offsetY - oDivY;
 
