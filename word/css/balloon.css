@@ -1,0 +1,30 @@
+.circle {
+    border-radius: 50%;
+    text-align: center;
+    border: 1px dashed green;
+    opacity :1;
+    transition: opacity 2s;
+    position: absolute;
+    /*animation: twinkle 1000ms alternate infinite;*/
+    cursor: pointer;
+}
+
+@keyframes twinkle {
+    from {
+        width: 20px;
+        height: 20px;
+    }
+    to {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.circle:hover {
+    background: green;
+    opacity :1 !important;
+    z-index: 100000 !important;
+    /*width: 400px !important;
+    height: 400px !important;*/
+    /*line-height: 400px !important;*/
+}

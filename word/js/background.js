@@ -60,7 +60,7 @@ function parseHtml(data) {
             wordsMap[key] = {
                 zh: '翻译',
                 count: 1,
-                known: true
+                known: false
             }
         }
     }

@@ -32,6 +32,9 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
+      "css": [
+        "css/balloon.css"
+      ],
       "js": [
         "libs/jquery-1.8.0.js",
         "libs/urlUtil.js",
