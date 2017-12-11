@@ -1,0 +1,37 @@
+<html>
+<head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 2000px;
+    height: 1000px;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+    let points = [{x:50,y: 50}, {x:100,y:100}, {x:150,y: 20}];
+    let kmid = (pa, pb, t) => {
+        return {
+            x: (1-t) * pa.x + t * pb.x,
+            y: (1-t) * pa.y + t * pb.y
+        }
+    }
+    for(let i = 0; i<points.length; i++ ) {
+        let newP = [];
+        for(let p=0; p<points.length-1; p++) {
+            let a = kmid(points[p], points[p+1], 0.5);
+            newP.push(a)
+        }
+        points = newP;
+    }
+    console.log(points)
+    // console.log(kmid(points[0], points[1], 0.5))
+</script>
+</body>
+</html>
+

@@ -95,7 +95,7 @@ function listMedia(Entries){
             item.className = 'item';
             item.title = Entries[i].name;
             item.onclick = (function(Entry){
-                
+
             })(Entries[i]);
             document.getElementById('container').appendChild(item);
             var icon = document.createElement('span');

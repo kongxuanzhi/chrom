@@ -28,18 +28,18 @@ chrome.contextMenus.create({
 });
 
 //https://developer.chrome.com/extensions/contextMenus#type-OnClickData
-function addToList(info, tab){
+function addToList(info, tab) {
     let domain = urlUtil.getDomain(info.pageUrl);
     localStorage.setItem(domain, (new Date()).toLocaleString());
     chrome.contextMenus.update('list', listStatue.delete);
 }
 
-function delFromList(info, tab){
+function delFromList(info, tab) {
     localStorage.removeItem(urlUtil.getDomain(info.pageUrl));
     chrome.contextMenus.update('list', listStatue.save);
 }
 
-function addNewWord(info, tab){
+function addNewWord(info, tab) {
     var url = 'http://translate.google.com.hk/#auto/zh-CN/'+info.selectionText;
     window.open(url, '_blank');
 }
@@ -47,10 +47,10 @@ function addNewWord(info, tab){
 //一个域名下一个words集合
 function parseHtml(data) {
     let wordsMap = {};
-    if (NetWords.isAdded(data.domain)){
+    if (NetWords.isAdded(data.domain)) {
         wordsMap = NetWords.get(data.domain);
     }
-    
+
     let words = pageParse.resolve(data.message);
     for (let word of words) {
         let key = word.toLowerCase();
@@ -75,7 +75,7 @@ function isAddedToList(domain) {
     if (!isAdded) {
         chrome.browserAction.setBadgeText({text:''});
     }
-    return isAdded; 
+    return isAdded;
 }
 
 let map = {
@@ -84,7 +84,7 @@ let map = {
 }
 
 //这里sender.url本来就可以是前台的url了，不需要再传过来
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     let type = message.type || '';
     if (message.data) {
         let result = map[type](message.data);

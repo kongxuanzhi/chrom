@@ -5,7 +5,7 @@
 function sendHtmlText() {
     let htmlText = document.getElementsByTagName("html")[0].innerText;
     sendMessage(updatePopUp, {
-    	type: 'parseHtml', 
+    	type: 'parseHtml',
     	data: {
     		message: htmlText,
     		domain: window.location.host

@@ -133,7 +133,7 @@ function movePoint(p) {
     let i = 0;
     let amount = 5000;
     let inter = setInterval(() => {
-        let p =getTPoint(points, i/amount);    
+        let p =getTPoint(points, i/amount);
         obj.style.top = p.y + 'px';
         obj.style.left = p.x + 'px';
         i++;
@@ -166,7 +166,7 @@ window.onload = function(){
             obj.oDivX = ev.clientX - obj.offsetLeft; //
             obj.oDivY = ev.clientY - obj.offsetTop;
 			obj.isMouseDown = true;
-            
+
             obj.parentElement.onmousemove = function(ev){  //注意这里是document
                 var ev = ev || event;
                 console.log('onmousemove' + obj.isMouseDown)
@@ -175,13 +175,13 @@ window.onload = function(){
                 obj.style.left = L + 'px';
                 obj.style.top = T + 'px';
             }
-       
+
             obj.parentElement.onmouseup = function(){
                 obj.parentElement.onmousemove = obj.parentElement.onmouseup = null;
                 //加入兼容问题
                 if( obj.releaseCapture) {
                     obj.releaseCapture();
-                }  
+                }
             }
 		}
 
