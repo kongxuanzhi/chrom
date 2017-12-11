@@ -82,3 +82,15 @@ db:
 
 # link:
 1. [正则表达式](http://blog.csdn.net/kongzhixuan/article/details/50239965)
+2. [Sample Extensions](https://developer.chrome.com/extensions/samples)
+4. [Overview](https://developer.chrome.com/extensions/overview)
+3. [Getting Started: Building a Chrome Extension](https://developer.chrome.com/extensions/getstarted)
+4. [babel-preset-env：你需要的唯一Babel插件](https://segmentfault.com/p/1210000008466178)
+5. [expose-loader 暴露jquery](https://webpack.js.org/loaders/expose-loader/)
+6. [Webpack引入jquery及其插件的几种方法](http://blog.csdn.net/yiifaa/article/details/51916560)
+7. [webpack 简易配置入门教程](https://segmentfault.com/a/1190000010844612#articleHeader0)
+
+
+Q&A
+1. [es6通过babel转码之后，还需要使用webpack才可以使用import关键字吗](https://www.2cto.com/kf/201612/573994.html)
+2. [Vue运行之后一片空白，错误 (0 , _router2.default) is not a function](https://segmentfault.com/q/1010000007892556)

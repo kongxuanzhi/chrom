@@ -1,0 +1,37 @@
+{
+  "name": "chrom",
+  "version": "1.0.0",
+  "description": "do chrom extention",
+  "main": "js/content.js",
+  "scripts": {
+    "babel": "babel src -d dist/babel",
+    "flow": "flow",
+    "build": "rimraf dist/ && npm run babel && webpack",
+    "h5watch": "npm run build && webpack --progress --colors --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kongxuanzhi/chrom.git"
+  },
+  "author": "tom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kongxuanzhi/chrom/issues"
+  },
+  "homepage": "https://github.com/kongxuanzhi/chrom#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "babelify": "^8.0.0",
+    "expose-loader": "^0.7.4",
+    "flow-bin": "^0.61.0",
+    "jquery": "^3.2.1",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.10.0"
+  }
+}
