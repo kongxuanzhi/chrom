@@ -13,22 +13,22 @@ body {
 </style>
 </head>
 <body>
-    <canvas id="myCanvas" width="3000" height="3000"></canvas>
+<canvas id="myCanvas" width="3000" height="3000"></canvas>
 <script type="text/javascript">
     let points = [{x:50,y: 50}, {x:190,y:600}, {x:150,y: 190},{x:350,y: 200}];
     var canvas=document.getElementById('myCanvas');
     var ctx=canvas.getContext('2d');
     ctx.fillStyle='#FF0000';
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     let i = 0;
     let amount = 100;
     let inter = setInterval(() => {
-        let p =getTPoint(points, i/amount);    
+        let p =getTPoint(points, i/amount);
         // ctx.beginPath();
         ctx.arc(p.x,p.y,2,0,Math.PI*2,true);
         ctx.closePath();
-        ctx.fill()   
+        ctx.fill()
         i++;
         if (i == amount) {
             clearInterval(inter)
@@ -36,13 +36,13 @@ body {
     }, 100);
 
     for (let i=0;i<points.length; i++) {
-        let p =points[i];    
+        let p =points[i];
         ctx.beginPath();
         ctx.arc(p.x,p.y,8,0,Math.PI*2,true);
         ctx.closePath();
-        ctx.fill()   
+        ctx.fill()
     }
-    
+
     function getTPoint(points, t) {
         let kmid = (pa, pb, t) => {
             return {

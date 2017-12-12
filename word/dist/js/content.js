@@ -60,29 +60,52 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */,
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _exposeLoader$Jquery = __webpack_require__(3);
+var _exposeLoader$Jquery = __webpack_require__(9);
 
 var _exposeLoader$Jquery2 = _interopRequireDefault(_exposeLoader$Jquery);
 
+var _file = __webpack_require__(12);
+
+var _file2 = _interopRequireDefault(_file);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// "libs/jquery-1.8.0.js",
-// 	"libs/urlUtil.js",
+/**
+ * Created by faiyer on 2017/9/22.
+ */
+//这个文件里可以完全操纵当前的网页内容
+//import jquery as $ in local area
+console.log(_file2.default);
+// import template1 from 'html-loader!../template/file'
+
 
 function sendHtmlText() {
+	//get entire show content on webpage
 	var htmlText = document.getElementsByTagName("html")[0].innerText;
+	//将内容在后台格式化处理后放入localstorage中，再返回前台展示
+	//处理内容包括：
+	//1. 过滤掉认识的单词
+	//2. 给不认识的单词在出现频率上增加
+	//3. 借助第三方工具，对陌生单词进行翻译
+	//做一些统计相关的工作
 	sendMessage({
 		type: 'parseHtml',
 		data: {
@@ -90,11 +113,7 @@ function sendHtmlText() {
 			domain: window.location.host
 		}
 	}, updatePopUp);
-} /**
-   * Created by faiyer on 2017/9/22.
-   */
-//import jquery as $ in local area
-
+}
 
 function checkNetAdded() {
 	sendMessage({
@@ -119,7 +138,11 @@ function sendMessage() {
 	});
 }
 
-//做一个弹窗
+// showWordCard()
+
+
+//应该有多种展现方式，以接口的形式呈现
+//将元素的拖动效果，写成组件
 function updatePopUp(ret) {
 	var _loop = function _loop(word) {
 		if (!word.known) {
@@ -128,12 +151,12 @@ function updatePopUp(ret) {
 			obj.classList.add('circle');
 			obj.innerText = word;
 			obj.style.color = '#000';
-			obj.style.backgroundColor = '#123456';
+			// obj.style.backgroundColor = '#123456';
 			obj.style.zIndex = 1 / r * 1000;
 			obj.style.top = Math.random() * document.body.offsetHeight + "px";
 			obj.style.left = Math.random() * document.body.offsetWidth + "px";
-			obj.style.width = obj.style.height = obj.style.lineHeight = 2 + 'px';
-			obj.style.fontSize = r + 'px';
+			// obj.style.width = obj.style.height = obj.style.lineHeight = 10  + 'px';
+			obj.style.fontSize = r + 12 + 'px';
 			obj.style.borderRadius = 0.5;
 			obj.style.opacity = 1;
 			// obj.onclick = function(e) {
@@ -156,7 +179,7 @@ function updatePopUp(ret) {
 					obj.style.backgroundColor = "black";
 					if (L < 10) {
 						L = 0;
-						word.known = true;
+						word.known = true; //回调函数
 						obj.parentElement.onmousemove = obj.parentElement.onmouseup = null;
 						obj.style.opacity = 1;
 						// obj.style.width = 20 + 'px';
@@ -191,17 +214,18 @@ function updatePopUp(ret) {
 
 (0, _exposeLoader$Jquery2.default)(document).ready(function ($) {
 	checkNetAdded();
+	// document.body.appendChild(template1)
 });
 
 /***/ }),
-/* 3 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(5);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(11);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
-/* 4 */
+/* 10 */
 /***/ (function(module, exports) {
 
 var g;
@@ -228,7 +252,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 5 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10486,6 +10510,18 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<img src=\"" + __webpack_require__(13) + "\">\n<div>\n  这是一个div\n</div>";
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type.\n(Source code omitted for this binary file)");
 
 /***/ })
 /******/ ]);

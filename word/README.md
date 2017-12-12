@@ -89,7 +89,7 @@ db:
 5. [expose-loader 暴露jquery](https://webpack.js.org/loaders/expose-loader/)
 6. [Webpack引入jquery及其插件的几种方法](http://blog.csdn.net/yiifaa/article/details/51916560)
 7. [webpack 简易配置入门教程](https://segmentfault.com/a/1190000010844612#articleHeader0)
-
+8. [阮一峰Es6语法知识点总结](http://es6.ruanyifeng.com/#README)
 
 Q&A
 1. [es6通过babel转码之后，还需要使用webpack才可以使用import关键字吗](https://www.2cto.com/kf/201612/573994.html)

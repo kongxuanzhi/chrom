@@ -30,6 +30,15 @@ var webpackConfig = {
             presets: ['env']
           }
         }
+      }, { // 处理html文件，并处理img 中 src 和 data-src 的引入路径
+        test: /\.html$/,
+        loader: "html-loader?attrs=img:src img:data-src"
+      }, { // 处理字体文件
+        test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?name=./fonts/[name].[ext]'
+      }, { // 处理图片，并将8k以下的图片转为base64编码
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader?limit=8192&name=./img/[hash].[ext]'
       }
     ]
   },

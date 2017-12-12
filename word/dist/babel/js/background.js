@@ -1,12 +1,16 @@
-'use strict';
+"use strict";
 
-var _other = require('../other');
+var _netWords = require("../model/netWords");
 
-console.log((0, _other.Add)(1, 33)); /**
-                                      * Created by faiyer on 2017/9/22.
-                                      */
+var _netWords2 = _interopRequireDefault(_netWords);
 
-console.log(window.$);
+var _utils = require("../libs/utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Created by faiyer on 2017/9/22.
+ */
 
 var listStatue = {
     save: {
@@ -36,13 +40,13 @@ chrome.contextMenus.create({
 
 //https://developer.chrome.com/extensions/contextMenus#type-OnClickData
 function addToList(info, tab) {
-    var domain = urlUtil.getDomain(info.pageUrl);
+    var domain = (0, _utils.getDomain)(info.pageUrl);
     localStorage.setItem(domain, new Date().toLocaleString());
     chrome.contextMenus.update('list', listStatue.delete);
 }
 
 function delFromList(info, tab) {
-    localStorage.removeItem(urlUtil.getDomain(info.pageUrl));
+    localStorage.removeItem((0, _utils.getDomain)(info.pageUrl));
     chrome.contextMenus.update('list', listStatue.save);
 }
 
@@ -54,11 +58,11 @@ function addNewWord(info, tab) {
 //一个域名下一个words集合
 function parseHtml(data) {
     var wordsMap = {};
-    if (NetWords.isAdded(data.domain)) {
-        wordsMap = NetWords.get(data.domain);
+    if (_netWords2.default.isAdded(data.domain)) {
+        wordsMap = _netWords2.default.get(data.domain);
     }
 
-    var words = pageParse.resolve(data.message);
+    var words = _utils.pageParse.resolve(data.message);
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
@@ -93,7 +97,7 @@ function parseHtml(data) {
         }
     }
 
-    NetWords.add(data.domain, wordsMap); //频繁使用的方法，应该使用静态方法，不应该new
+    _netWords2.default.add(data.domain, wordsMap); //频繁使用的方法，应该使用静态方法，不应该new
     chrome.browserAction.setBadgeText({ text: Object.getOwnPropertyNames(wordsMap).length.toString() });
     return wordsMap;
 }

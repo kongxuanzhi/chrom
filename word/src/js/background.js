@@ -2,25 +2,13 @@
  * Created by faiyer on 2017/9/22.
  */
 
-// "libs/constants.js",
-//     "libs/reg.js",
-//     "libs/md5.js",
-//     "libs/localStorageUtil.js",
-//     "libs/model/word.js",
-//     "libs/model/netWords.js",
-//     "libs/urlUtil.js",
-//     "libs/pageParse.js",
-
-import { Add } from "../other"
-import { Add } from "../model/netWords"
-
-console.log(Add(1, 33))
-console.log(window.$)
+import NetWords from "../model/netWords"
+import { getDomain, pageParse } from "../libs/utils"
 
 let listStatue = {
     save: {
         'title': '保存网页链接',
-         'onclick': addToList
+        'onclick': addToList
     },
     delete: {
         'title': '移除网页链接',
@@ -45,13 +33,13 @@ chrome.contextMenus.create({
 
 //https://developer.chrome.com/extensions/contextMenus#type-OnClickData
 function addToList(info, tab) {
-    let domain = urlUtil.getDomain(info.pageUrl);
+    let domain = getDomain(info.pageUrl);
     localStorage.setItem(domain, (new Date()).toLocaleString());
     chrome.contextMenus.update('list', listStatue.delete);
 }
 
 function delFromList(info, tab) {
-    localStorage.removeItem(urlUtil.getDomain(info.pageUrl));
+    localStorage.removeItem(getDomain(info.pageUrl));
     chrome.contextMenus.update('list', listStatue.save);
 }
 
