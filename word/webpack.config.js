@@ -1,13 +1,20 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 // require("expose-loader?libraryName!./file.js");
+const extractCssLess = new ExtractTextPlugin({
+  filename: "[name].[contenthash].css",
+  disable: process.env.NODE_ENV === "development"
+});
 
 var webpackConfig = {
   // 设置入口文件。
   entry: {
     'background': './src/js/background.js',
-    'content': './src/js/content.js'
+    'content': './src/js/content.js',
+    'main': './src/js/main.js'
   },
   output: {
     // 设置输出文件夹
@@ -30,19 +37,58 @@ var webpackConfig = {
             presets: ['env']
           }
         }
-      }, { // 处理html文件，并处理img 中 src 和 data-src 的引入路径
-        test: /\.html$/,
-        loader: "html-loader?attrs=img:src img:data-src"
-      }, { // 处理字体文件
+      },
+      // { // 处理html文件，并处理img 中 src 和 data-src 的引入路径
+      //   test: /\.html$/,
+      //   loader: "html-loader?attrs=img:src img:data-src"
+      // },
+      { // 处理字体文件
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader?name=./fonts/[name].[ext]'
       }, { // 处理图片，并将8k以下的图片转为base64编码
         test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader?limit=8192&name=./img/[hash].[ext]'
-      }
+        loader: 'url-loader?limit=8&name=./img/[hash].[ext]'
+      },
+      {
+        test: /\.less$/,
+        use: extractCssLess.extract({
+          use: [{
+            loader: "css-loader"
+          }, {
+            loader: "less-loader"
+          }],
+          // use style-loader in development
+          fallback: "style-loader"
+        })
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: extractCssLess.extract("css-loader", "style-loader")
+        // 'style-loader!css-loader'
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-withimg-loader'
+　　　 }
+      // { test: /\.ejs$/, loader: 'ejs-loader?variable=data' },
     ]
   },
-  plugins: []
+  node: {
+    fs: 'empty'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      // favicon: './images/logo.png',
+      hash: true,
+      title: 'title',
+      chunks: ['main'],
+      // excludeChunks: ['content', 'background'],
+      template: './src/template/card/snow.html'
+    }),
+    extractCssLess
+  ]
 }
 
 module.exports = webpackConfig
