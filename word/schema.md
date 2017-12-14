@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="<% require('./card.css') %>">
+<div id="card">
+  <img src="<%= require('./logo.png') %>">
+  <div id="temp">
+    <% if (names.length) { %>
+      <ul>
+        <% names.forEach(function(name) { %>
+          <li><%= name %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+    这是一个div232
+  </div>
+</div>

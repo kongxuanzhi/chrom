@@ -4,10 +4,8 @@
 //这个文件里可以完全操纵当前的网页内容
 //import jquery as $ in local area
 import $ from 'expose-loader?$!jquery'
-// import template1 from 'html-loader!../template/file'
-import template1 from 'html-loader!../template/file.html'
-
-console.log(template1)
+// import template1 from 'html-loader?attrs=img:src img:data-src!../template/file.html'
+import template from "ejs-loader!./../template/card/card.ejs"
 
 function sendHtmlText() {
 		//get entire show content on webpage
@@ -48,7 +46,6 @@ function sendMessage(message = {}, callback) {
 }
 
 // showWordCard()
-
 
 //应该有多种展现方式，以接口的形式呈现
 //将元素的拖动效果，写成组件
@@ -119,5 +116,12 @@ function updatePopUp(ret) {
 
 $(document).ready(function($) {
 	checkNetAdded()
-	// document.body.appendChild(template1)
+	var names = ['foo', 'bar', 'baz'];
+	let renderResult = template({
+		names: names
+	});
+	console.log(renderResult);
+	for (let el of $(renderResult)) {
+		document.body.appendChild(el)
+	}
 });

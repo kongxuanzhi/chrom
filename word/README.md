@@ -90,7 +90,41 @@ db:
 6. [Webpack引入jquery及其插件的几种方法](http://blog.csdn.net/yiifaa/article/details/51916560)
 7. [webpack 简易配置入门教程](https://segmentfault.com/a/1190000010844612#articleHeader0)
 8. [阮一峰Es6语法知识点总结](http://es6.ruanyifeng.com/#README)
+9. [webpack 安装说明](https://www.npmjs.com/package/webpack)
+10. [webpack 2.2中文文档](http://www.css88.com/doc/webpack2/loaders/html-loader/)
+11. [es6 import & export](http://blog.csdn.net/SunPrincess/article/details/51513475)
+12. [ES6入门 —— Class和Module](http://blog.csdn.net/u014695532/article/details/51815025)
+13. [javascript中html字符串转化为jquery dom对象的方法](http://www.jb51.net/article/71605.htm)
+14. [Getting Started with EJS](http://www.embeddedjs.com/getting_started.html#include)
+15. [VUE -- ejs模板的书写](https://www.cnblogs.com/mafeng/p/7692199.html)
+16. [ejs-loader](https://www.npmjs.com/package/ejs-loader)
+17. [webpack踩坑之路 (2)——图片的路径与打包, 从js, css和html中加载图片](https://www.cnblogs.com/ghost-xyx/p/5812902.html)
+18. [3d transform的坐标空间及位置](https://segmentfault.com/a/1190000004233074)
+19. [CSS3 transform-style 属性](http://www.w3school.com.cn/cssref/pr_transform-style.asp)
+20. [【WEBPACK】分离css单独打包](http://www.jianshu.com/p/439764e3eff2)
 
 Q&A
 1. [es6通过babel转码之后，还需要使用webpack才可以使用import关键字吗](https://www.2cto.com/kf/201612/573994.html)
 2. [Vue运行之后一片空白，错误 (0 , _router2.default) is not a function](https://segmentfault.com/q/1010000007892556)
+3. [url-loader和file-loader加载器有什么区别？](https://segmentfault.com/q/1010000006239813/a-1020000006241010)
+4. [怎么得到es6一个class的所有方法: 使用getOwnPropertyNames](https://segmentfault.com/q/1010000006186313)
+5. [Error: Can't resolve 'fs' in （webpack 2配置CSS loadeers）](http://blog.csdn.net/xiaowoniuqiren/article/details/61203321)
+6. [webpack打包时，ejs文件里的图片怎么能跟着一起打包，换路径](https://segmentfault.com/q/1010000008436923)
+7. [webpack/style-loader 是用来干什么的？](https://segmentfault.com/q/1010000004579566/a-1020000004581074)
+8. [好吧，CSS3 3D transform变换，不过如此！](http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/)
+
+1. HtmlWebpackPlugin 默认生成一个index.html文件， 并将webpack打包生成的js文件注入到index.html文件中
+   [html-webpack-plugin用法全解](https://segmentfault.com/a/1190000007294861)
+   [html-webpack-plugin](http://blog.csdn.net/keliyxyz/article/details/51513114)
+2. loader的作用
+css-loader 是处理css文件中的url()等
+style-loader 将css插入到页面的style标签
+顺便告诉你
+less-loader 是将less文件编译成css
+sass-loader 是将sass文件编译成css
+loader的加载顺序是从右往左，从下往上
+
+todo:
+1. 下雪的效果
+
+webpack --progress --colors --watch
