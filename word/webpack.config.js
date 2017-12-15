@@ -6,7 +6,8 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 // require("expose-loader?libraryName!./file.js");
 const extractCssLess = new ExtractTextPlugin({
   filename: "[name].[contenthash].css",
-  disable: process.env.NODE_ENV === "development"
+  // disable: process.env.NODE_ENV === "development"
+  disable: true
 });
 
 var webpackConfig = {
@@ -53,6 +54,8 @@ var webpackConfig = {
         test: /\.less$/,
         use: extractCssLess.extract({
           use: [{
+            loader: "style-loader"
+          }, {
             loader: "css-loader"
           }, {
             loader: "less-loader"
@@ -64,7 +67,11 @@ var webpackConfig = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: extractCssLess.extract("css-loader", "style-loader")
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" }
+        ]
+        // loader: 'style-loader!css-loader' //extractCssLess.extract("css-loader", "style-loader")
         // 'style-loader!css-loader'
       },
       {
@@ -78,15 +85,15 @@ var webpackConfig = {
     fs: 'empty'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      inject: true,
-      // favicon: './images/logo.png',
-      hash: true,
-      title: 'title',
-      chunks: ['main'],
-      // excludeChunks: ['content', 'background'],
-      template: './src/template/card/snow.html'
-    }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   // favicon: './images/logo.png',
+    //   hash: true,
+    //   title: 'title',
+    //   chunks: ['main'],
+    //   // excludeChunks: ['content', 'background'],
+    //   template: './src/template/card/snow.html'
+    // }),
     extractCssLess
   ]
 }
