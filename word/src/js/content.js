@@ -5,7 +5,9 @@
 //import jquery as $ in local area
 import $ from 'expose-loader?$!jquery'
 // import template1 from 'html-loader?attrs=img:src img:data-src!../template/file.html'
-import template from "ejs-loader!./../template/card/card.ejs"
+// import template from "ejs-loader!./../template/card/card.ejs"
+// import template from "ejs-loader!./../template/card/card.ejs"
+require('./main.js')
 
 function sendHtmlText() {
 		//get entire show content on webpage
@@ -116,12 +118,12 @@ function updatePopUp(ret) {
 
 $(document).ready(function($) {
 	checkNetAdded()
-	var names = ['foo', 'bar', 'baz'];
-	let renderResult = template({
-		names: names
-	});
-	console.log(renderResult);
-	for (let el of $(renderResult)) {
-		document.body.appendChild(el)
-	}
+	// var names = ['foo', 'bar', 'baz'];
+	// let renderResult = template({
+	// 	names: names
+	// });
+	// console.log(renderResult);
+	// for (let el of $(renderResult)) {
+	// 	document.body.appendChild(el)
+	// }
 });

@@ -1,11 +1,21 @@
 
-require('../css/reset.css')
-require('../template/card/snow.less')
-require('../../css/balloon.css')
+// require('../css/reset.css')
 import $ from 'expose-loader?$!jquery'
-require('../template/card/snow.html')
 
 $(document).ready(function ($) {
+  require('../template/card/snow.less')
+  require('../../css/balloon.css')
+
+
+  // var names = ['foo', 'bar', 'baz'];
+	// let renderResult = template({
+	// 	names: names
+	// });
+	// console.log(renderResult);
+  for (let el of $(require('../template/card/snow.html'))) {
+		document.body.appendChild(el)
+	}
+
   let flakes = document.getElementsByClassName('flake');
   let snows = [];
   [].forEach.call(flakes, function (flake) {
