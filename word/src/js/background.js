@@ -86,11 +86,22 @@ function isAddedToList(domain) {
     return isAdded;
 }
 
+const setWordIndex = (slideIndex) => {
+    localStorage.setItem('wordIndex', slideIndex)
+}
+
+const getWordIndex = (slideIndex) => {
+    return +(localStorage.getItem('wordIndex') || 1 - 1)
+}
+
 // 监听 content.js 中发来的事件，做出不同的操作
 let map = {
     'parseHtml': parseHtml,
-    'isAddedToList': isAddedToList
+    'isAddedToList': isAddedToList,
+    'setWordIndex': setWordIndex,
+    'getWordIndex': getWordIndex
 }
+
 
 //这里sender.url本来就可以是前台的url了，不需要再传过来
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {

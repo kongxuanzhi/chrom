@@ -102,6 +102,10 @@ db:
 18. [3d transform的坐标空间及位置](https://segmentfault.com/a/1190000004233074)
 19. [CSS3 transform-style 属性](http://www.w3school.com.cn/cssref/pr_transform-style.asp)
 20. [【WEBPACK】分离css单独打包](http://www.jianshu.com/p/439764e3eff2)
+21. [webpack-contrib/copy-webpack-plugin](https://github.com/webpack-contrib/copy-webpack-plugin)
+22. [webpack对样式的处理 ,导入样式require和import的区别](http://blog.csdn.net/chengnuo628/article/details/52475446)
+23. [exports 和 module.exports 的区别](http://cnodejs.org/topic/5231a630101e574521e45ef8)
+24. [jQuery全屏滚动插件fullPage.js](http://www.dowebok.com/77.html)
 
 Q&A
 1. [es6通过babel转码之后，还需要使用webpack才可以使用import关键字吗](https://www.2cto.com/kf/201612/573994.html)
@@ -112,6 +116,9 @@ Q&A
 6. [webpack打包时，ejs文件里的图片怎么能跟着一起打包，换路径](https://segmentfault.com/q/1010000008436923)
 7. [webpack/style-loader 是用来干什么的？](https://segmentfault.com/q/1010000004579566/a-1020000004581074)
 8. [好吧，CSS3 3D transform变换，不过如此！](http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/)
+9. [nodejs中module.export为一个异步返回结果时该怎么做?](https://segmentfault.com/q/1010000003771658/a-1020000003773540)
+
+10. [Fullpage常见问题](http://www.uedsc.com/fullpage-faq.html)
 
 1. HtmlWebpackPlugin 默认生成一个index.html文件， 并将webpack打包生成的js文件注入到index.html文件中
    [html-webpack-plugin用法全解](https://segmentfault.com/a/1190000007294861)
@@ -128,3 +135,22 @@ todo:
 1. 下雪的效果
 
 webpack --progress --colors --watch
+
+```js
+export default {
+  renderResult: fetch(json).then(function (response) {
+    let renderResult = template({
+      users: response.blob()
+    });
+    return renderResult
+  })
+}
+```
+style="color: <%= '#' + (~~(Math.random() * Math.pow(2, 24))).toString(16) %>"
+
+// $.fn.fullpage.moveSlideRight();
+
+
+// var FileSaver = require('file-saver');
+// var blob = new Blob(["Hello, world!"], { type: "text/plain;charset=utf-8" });
+// FileSaver.saveAs(blob, "world.txt");

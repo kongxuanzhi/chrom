@@ -1,0 +1,245 @@
+<html>
+<head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 2000px;
+    height: 1000px;
+}
+
+/*div {
+    line-height: 100px;
+    font-size: 42px;
+    text-align: center;
+}
+*/
+
+/*
+a {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+    color: #000;
+    font-size: 32px;
+    padding: 0 10px;
+}
+
+/* 大框
+a:hover::before, a:hover::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -15%%;
+    left: -14%%;
+    width: 120%;
+    height: 120%;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #DDD;
+ }
+
+/* 小框 */
+/* a:hover::after {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border-width: 2px;
+ }
+.circle:after {
+position: absolute;
+ content: url(images/logo.png);
+} */
+/*.circle:before {
+	/*background-color: #541348;
+    width: 100px;
+    height: 100px;
+    display: block;
+    content: '\25e4';
+    position: absolute;
+    top: 8px;
+
+}
+
+.circle:hover::before {
+    content: '';
+    background: green;
+}*/
+#div1,
+.circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border: 1px dashed green;
+    line-height: 20px;
+    font-size: 7px;
+    opacity :1.1;
+    /*transition: opacity 2s, all 0.2s;*/
+    position: absolute;
+    /*animation: twinkle 1000ms alternate infinite;*/
+}
+
+@keyframes twinkle {
+    from {opacity: 0.1;}
+    to {opacity: 1;}
+}
+
+/*.circle:hover {
+    background: green;
+    opacity :1;
+    width:300px;
+    height:300px;
+    line-height: 300px;
+    font-size: 24px;
+}*/
+/*a:before { content:""; }  */
+</style>
+</head>
+<body>
+<!-- hi are you ok -->
+<!--<div id="clock_div"></div> -->
+<!-- <a href="images/" data-et="fdf">nihao</a> -->
+<div id="div1" style="background-color: orange; z-index: 3; top: 20px; left: 134px"></div>
+<!-- <div style="width: 600px; height:600px; position: relative; border: 1px solid red; left: 400px; top: 100px;">
+<div class="circle" style="background-color: pink; z-index: 2; top: 10px; left: 60px">World 世界</div>
+</div> -->
+<!--<div class="circle" style="background-color: blue; z-index: 5; top: 50px; left: 184px">World 世界</div>-->
+<div class="circle" style="background-color: pink; z-index: 5; top: 60px; left: 24px">World 世界</div>
+<div class="circle" style="background-color: red; z-index: 1; top: 340px; left: 134px">World 世界</div>
+<!-- <script src="js/my_clock.js"></script> -->
+<div id="test" style="border: 1px dashed red; position: fixed; top:300;left:220;"></div>
+<script src="./libs/beziar.js"></script>
+<script type="text/javascript">
+
+// movePoint(0)
+
+function movePoint(p) {
+    var circles = document.getElementsByClassName('circle');
+    let obj = document.getElementById('div1');
+    let points = [];
+    for(let c of circles) {
+        points.push({
+            x: c.offsetLeft,
+            y: c.offsetTop
+        });
+    }
+    // console.log(points);
+    let i = 0;
+    let amount = 5000;
+    let inter = setInterval(() => {
+        let p =getTPoint(points, i/amount);
+        obj.style.top = p.y + 'px';
+        obj.style.left = p.x + 'px';
+        i++;
+        if (i == amount) {
+            clearInterval(inter)
+            movePoint(parseInt(Math.random()*100) % (points.length-1))
+        }
+    }, 20);
+}
+
+window.onload = function(){
+    var circles = document.getElementsByClassName('circle');
+    for (var c of circles) {
+        tqfc(c);
+    }
+
+    // tqfc(document.getElementById('div1'))
+    function tqfc(obj){
+        var e = document.getElementById('test');
+        // obj.onmousedown = function(ev) {
+        //     var ev = ev || event;
+        //     // console.log("page:" + ev.pageX + ": " + ev.pageY)
+        //     // console.log("client:" + ev.clientX + ": " + ev.clientY)
+        //     // console.log("scrollTop:" + document.body.scrollTop)
+        //     e.style.width = ev.offsetX;
+        //     e.style.height = ev.offsetY;
+        // }
+		obj.onmousedown = function(ev){
+            var ev = ev || event;
+            obj.oDivX = ev.clientX - obj.offsetLeft; //
+            obj.oDivY = ev.clientY - obj.offsetTop;
+			obj.isMouseDown = true;
+
+            obj.parentElement.onmousemove = function(ev){  //注意这里是document
+                var ev = ev || event;
+                console.log('onmousemove' + obj.isMouseDown)
+                let L = ev.clientX - obj.oDivX;
+                let T = ev.clientY - obj.oDivY;
+                obj.style.left = L + 'px';
+                obj.style.top = T + 'px';
+            }
+
+            obj.parentElement.onmouseup = function(){
+                obj.parentElement.onmousemove = obj.parentElement.onmouseup = null;
+                //加入兼容问题
+                if( obj.releaseCapture) {
+                    obj.releaseCapture();
+                }
+            }
+		}
+
+        // obj.onmousedown = function(ev){
+        //     var ev = ev || event;
+        //     // console.log(ev.pageX + ": " + ev.pageY)
+        //     // console.log(ev.clientX + ": " + ev.clientX)
+
+        //     //ev.clientX 距离坐标系原点的距离
+        //     //this.offsetLeft 元素左上角到原点的距离
+        //     var oDivX = obj.offsetLeft - this.offsetLeft; //
+        //     var oDivY = obj.offsetTop - this.offsetTop;
+        //     obj.style.backgroundColor = 'red';
+        //     console.log("x:" + ev.offsetX  + ": " + oDivX);
+        //     console.log("y:" + ev.offsetY  + ": " + oDivY);
+        //     //加入兼容问题
+        //     if(obj.setCapture){
+        //         obj.setCapture();
+        //     }
+
+        //     obj.parentElement.onmousemove = function(ev){  //注意这里是document
+        //         var ev = ev || event;
+
+        //         L = ev.offsetX - oDivX;
+        //         T = ev.offsetY - oDivY;
+
+        //         //限制不超出可视范围
+        //         if(L < 100){  //磁性吸附重点在于这里,原本是0,改成100
+        //             L = 0;
+        //         }else if(L > obj.parentElement.clientWidth - obj.offsetWidth){
+        //             L = obj.parentElement.clientWidth - obj.offsetWidth;
+        //         }
+
+        //         if(T<0){
+        //             T = 0;
+        //         }else if(T>obj.parentElement.clientHeight - obj.offsetHeight){
+        //             T = obj.parentElement.clientHeight - obj.offsetHeight;
+        //         }
+
+        //         obj.style.left = L + 'px';
+        //         obj.style.top = T + 'px';
+        //     }
+
+        //     return false;
+        // }
+
+        // document.onmouseup = function(){
+        //     document.onmousedown = obj.parentElement.onmousemove = null;
+        //     obj.style.backgroundColor = '#7391C5';
+
+        //     //加入兼容问题
+        //     if( obj.releaseCapture) {
+        //         obj.releaseCapture();
+        //     }
+        // }
+    }
+}
+</script>
+</body>
+</html>
+

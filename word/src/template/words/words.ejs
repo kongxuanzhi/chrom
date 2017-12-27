@@ -1,0 +1,9 @@
+<div id="word-slide-wrap">
+  <div id="word-slide">
+    <div class="section fp-auto-height">
+      <% words.forEach(function(word, index) { %>
+      <div class="slide" data-index="<%= index %>"><%= index %>  <%= word.en %>  <%= word.zh %></div>
+      <% }) %>
+    </div>
+  </div>
+</div>

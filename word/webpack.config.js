@@ -2,11 +2,13 @@ var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // require("expose-loader?libraryName!./file.js");
 const extractCssLess = new ExtractTextPlugin({
   filename: "[name].[contenthash].css",
-  disable: process.env.NODE_ENV === "development"
+  disable: true
+  // disable: process.env.NODE_ENV === "development"
 });
 
 var webpackConfig = {
@@ -14,7 +16,8 @@ var webpackConfig = {
   entry: {
     'background': './src/js/background.js',
     'content': './src/js/content.js',
-    'main': './src/js/main.js'
+    'main': './src/js/main.js',
+    'words': './src/js/words.js'
   },
   output: {
     // 设置输出文件夹
@@ -63,8 +66,8 @@ var webpackConfig = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
-        loader: extractCssLess.extract("css-loader", "style-loader")
+        loader: 'style-loader!css-loader'
+        // loader: extractCssLess.extract("style-loader", "css-loader")
         // 'style-loader!css-loader'
       },
       {
@@ -83,11 +86,16 @@ var webpackConfig = {
       // favicon: './images/logo.png',
       hash: true,
       title: 'title',
-      chunks: ['main'],
+      chunks: ['content'],
       // excludeChunks: ['content', 'background'],
-      template: './src/template/card/snow.html'
+      // template: './src/template/card/snow.html'
     }),
-    extractCssLess
+    extractCssLess,
+    new CopyWebpackPlugin([
+      { from: 'manifest.json', to: 'manifest.json' },
+      { from: 'popup.html', to: 'popup.html' },
+      { from: 'images/logo.png', to: 'images/logo.png' },
+    ])
   ]
 }
 

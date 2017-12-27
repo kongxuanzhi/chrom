@@ -1,0 +1,37 @@
+#word-slide-wrap {
+  position: fixed !important;
+  height: auto !important;
+  bottom: 0px;
+  right: 0;
+  width: 100%;
+  z-index: 999999;
+
+  .section {
+    text-align: center;
+    cursor: pointer;
+
+    .slide {
+        background-color: transparent;
+        color: black;
+        font-size: 20px;
+
+        label {
+            transform: rotateZ(00deg);
+        }
+
+        .num {
+            color: #0aff14;
+            font-family: monospace;
+            display: block;
+        }
+    }
+
+    // .slide:hover {
+    //     font-size: 96px;
+    // }
+
+    .known {
+        background-color: #0aff14;
+    }
+  }
+}
