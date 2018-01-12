@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+    "name": "get_ticket",
+    "version": "1.0",
+    "description": "让你永远也点击不到Google的搜索按钮",
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            // "matches": ["*://kyfw.12306.cn/"],
+            "js": ["get-ticket.js"]
+        }
+    ]
+}

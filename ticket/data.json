@@ -1,0 +1,100 @@
+{
+  "data": {
+    "flag": "1",
+    "map": {
+      "KCN": "潢川",
+      "SHH": "上海",
+      "SNH": "上海南"
+    },
+    "result": [
+
+        "|预订|55000K445800|K4458|SNH|NCW|SNH|KCN|07:21|19:09|11:48|N|NXUW9XzwupOdH9+GZVtTNTeGEg/YA981+CGrxzFowiEndAFF|20180205|3|H1|01|08|0|0|||||无||无|||无|||||101020|112|0", "wQQOzOX15z9ER18TRTq3TGSceV2ctFH6tlhv/Y+++a6e5R6AN30hfN2c2tl9TdXie7awCCyqljo3
+        9 taUsqyo1z145M7ezZbNcrpLKoqI9dH4MY3N3OXLLUnY5SKy6KqIq20M6dY5rYqZ856skZaQfgdY
+        WHblCoF9tpHNidc + Wau0HdxyrMV + HPKXs1Web07 + ipiVr1NEBzcTWh8otEtnyOFGJz6 + gTiQGT0J
+        Z / 0o bOFJpmC5HcFnWYcSA + S9fyVvQtj8ldky9PU =
+        | 预订 | 550000 K751C0 | K751 | SNH | PEN | SNH | KCN | 10: 42 | 02: 01 | 15: 19 | Y | 84 SD2wLVimPGnwix86qEg + G3J / vgZ6ohpExxsqChuP0facNVBR2wTxcplAQ = | 20180205 | 3 | H2 | 01 | 18 | 0 | 0 || || 无 || | 有 || 无 | 无 || || | 10401030 | 1413 | 0 ","
+        | 预订 | 55000 K115650 | K1156 | SHH | CDW | SHH | KCN | 11: 16 | 22: 01 | 10: 45 | N | 0 md96OrBb1VenJilSeRBLpGLklJut7oROhOvgFxBeuyWA8Mxuv7otApHeaw = | 20180205 | 3 | H6 | 01 | 11 | 0 | 0 || || 无 || | 无 || 无 | 无 || || | 10401030 | 1413 | 0 ","
+        LkCEBeSZnVoTvIzwNSoMwmK / W8oYSrkmybDSDyKfGVvOkTqBu2ejcKtaBgmx7LLwV70jICy9mw34
+        YarthwcIOuhmlf6o0pH6TX5yFy47U7DiDAdUrrsCKqKovSFOlU16Zkowmo3Un / bPNRgwJCKGw1Dy
+        gVJmQP6lNyzXTJtnuzE4qlF4KngQR8uVlqlSPD7SjQWb45 / uTnFZukQ9NKhasj95 + VNdf8NT53Fv
+        VtjQKojquT2PwvHaeDQROP0y80R0E7nlvQ ==
+        | 预订 | 550000 K46404 | K464 | SHH | XUN | SHH | KCN | 11: 47 | 22: 37 | 10: 50 | Y | Wfn4 + 0 TSPmJR8OLz4Vprij5Nr01EeZx5ldgMzQ6Binpn491F5DKXBCNoWtg = | 20180205 | 3 | HY | 01 | 09 | 0 | 0 || || 1 || | 有 || 10 | 5 || || | 10401030 | 1413 | 0 "," | 预订 | 55000 K110650 | K1106 | SHH | NFF | SHH | KCN | 15: 04 | 01: 00 | 09: 56 | N | 0 md96OrBb1VenJilSeRBLpGLklJut7oROhOvgFxBeuyWA8Mxuv7otApHeaw = | 20180205 | 3 | H3 | 01 | 10 | 0 | 0 || || 无 || | 无 || 无 | 无 || || | 10401030 | 1413 | 0 "]
+  },
+  "httpstatus ":200,
+  "messages ":"",
+  "status ":true
+}
+ticket_55000K110650
+
+document.getElementById('ticket_550000K46404').lastChild.firstChild.click()
+document.getElementById('ticket_55000K110650').lastChild.firstChild.click()
+
+
+
+
+
+/**
+ * Created by faiyer on 2017/9/20.
+ */
+
+// https://kyfw.12306.cn/otn/leftTicket/init
+// https://kyfw.12306.cn/otn/confirmPassenger/initDc
+// function btn_move(el, mouseLeft, mouseTop){
+//     var leftRnd = (Math.random()-0.5)*20;
+//     var topRnd = (Math.random()-0.5)*20;
+//     var btnLeft = mouseLeft+(leftRnd>0?100:-100)+leftRnd;
+//     var btnTop = mouseTop+(topRnd>0?30:-30)+topRnd;
+//     btnLeft = btnLeft<100?(btnLeft+window.innerWidth-200):(btnLeft>window.innerWidth-100?btnLeft-window.innerWidth+200:btnLeft);
+//     btnTop =  btnTop<100?( btnTop+window.innerHeight-200):(btnTop>window.innerHeight-100?btnTop-window.innerHeight+200:btnTop);
+//     el.style.position = 'fixed';
+//     el.style.left = btnLeft+'px';
+//     el.style.top = btnTop+'px';
+// }
+
+// function over_btn(e){
+//     if(!e){
+//         e = window.event;
+//     }
+//     btn_move(this, e.clientX, e.clientY);
+// }
+
+// document.getElementById('s_btn_wr').onmouseover = over_btn;
+
+document.getElementById('train_date').value = "2018-02-04"
+var refresh = true;
+setInterval(function(){
+    if (refresh) {
+        document.getElementById('query_ticket').click();
+        console.log(1);
+        if (document.getElementById('qd_closeDefaultWarningWindowDialog_id') != null) {
+            document.getElementById('qd_closeDefaultWarningWindowDialog_id').click();
+        } else if (document.getElementById('ticket_550000K46404').lastChild.firstChild.localName === 'a') {
+            document.getElementById('ticket_550000K46404').lastChild.firstChild.click();
+            refresh = false;
+            alert('填写信息')
+            function test(argument) {
+                alert('loaded');
+                  $("#normal_passenger_id li").click(function(aC) {
+            if (aC.target.tagName.toUpperCase() == "LABEL") {
+                return
+            }
+            var aB = $.whatsSelect(false);
+            if (aB) {
+                $(this).find("input").attr("checked", false);
+                dhtmlx.alert({
+                    title: "温馨提示",
+                    ok: "确定",
+                    text: "暂不支持混合选择！",
+                    type: "alert-error"
+                });
+                return
+            }
+            var aD = $(this).find("input");
+            excuteClickEditPassenger(aD)
+        })
+            }
+            window.onload = test;
+        }
+    }
+}, 400);
+document.getElementById('train_date').value = "2018-02-14"
